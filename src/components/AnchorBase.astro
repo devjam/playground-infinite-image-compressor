@@ -1,0 +1,30 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+// `href`を必須のプロパティとして定義し、その他の<a>タグの属性はHTMLAttributesから継承
+type Props = HTMLAttributes<'a'> & {
+  href: string
+}
+
+const { href, target: userDefinedTarget, class: className, ...otherProps } = Astro.props
+
+// 外部リンクかどうかを判定する関数
+const isExternalLink = (href: string): boolean => {
+  return href.startsWith('http://') || href.startsWith('https://')
+}
+
+// 外部リンクの場合、target="_blank"とrel="noopener"を設定
+const target = userDefinedTarget || (isExternalLink(href) ? '_blank' : undefined)
+const rel = target === '_blank' ? 'noopener' : undefined
+---
+
+<a
+  class={className}
+  {href}
+  {target}
+  {rel}
+  {...otherProps}
+  {...target !== '_blank' ? { ['data-astro-prefetch']: '' } : {}}
+>
+  <slot />
+</a>

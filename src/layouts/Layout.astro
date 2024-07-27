@@ -1,0 +1,90 @@
+---
+import defaultOpenGraphImage from '../assets/opengraph-image.png'
+import { SITE_LANG, SITE_REGION, SITE_TITLE, SITE_TWITTER_ID } from '../consts'
+import Header from './Header.astro'
+
+interface Props {
+  title: string
+  description?: string | undefined
+  repoUrl?: string
+}
+
+const { title, description, repoUrl } = Astro.props
+
+const pageTitle = `${title} | ${SITE_TITLE}`
+const resolvedOgImage = new URL(`${defaultOpenGraphImage.src}`, Astro.site)
+const canonicalURL: URL = new URL(Astro.url.pathname, Astro.site)
+---
+
+<html lang={SITE_LANG}>
+  <head>
+    {
+      /**
+       * sort the order of elements in the `<head>` to improve performance
+       * https://speakerdeck.com/csswizardry/get-your-head-straight?slide=39
+       */
+    }
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <title>{pageTitle}</title>
+
+    <script src="../scripts/main.ts"></script>
+
+    {description && <meta name="description" content={description} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content={`@${SITE_TWITTER_ID}`} />
+    <meta name="twitter:title" content={pageTitle} />
+
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={resolvedOgImage} />
+    {canonicalURL && <meta property="og:url" content={canonicalURL} />}
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:site_name" content={SITE_TITLE} />
+    <meta property="og:locale" content={`${SITE_LANG}_${SITE_REGION}`} />
+
+    <link
+      rel="apple-touch-icon"
+      href="https://shiftbrain.com/wp-content/themes/my-theme/assets/apple-touch-icon.35529670.png"
+    />
+    {canonicalURL && <link rel="canonical" href={canonicalURL} />}
+    <link
+      rel="icon"
+      href="https://shiftbrain.com/wp-content/themes/my-theme/assets/favicon.fa623687.ico"
+    />
+
+    {/* Google font */}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="min-h-svh font-shiftbrain">
+    <Header {title} {repoUrl} />
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  @font-face {
+    src: url('https://playground.shiftbrain.com/fonts/SHIFTBRAIN_Norms_Variable.woff2');
+    font-family: 'SHIFTBRAIN Norms Variable';
+    font-display: swap;
+  }
+
+  html {
+    line-break: strict;
+    word-break: normal;
+    overflow-wrap: anywhere;
+  }
+
+  /* スマホでボタンをタップした際にズームするのを禁止 */
+  button {
+    touch-action: manipulation;
+  }
+</style>

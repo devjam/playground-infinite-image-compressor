@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro'
+import { title, slug } from '../meta.json'
+---
+
+<Layout {title} repoUrl={`https://github.com/devjam/playground-${slug}`}>
+  <main>
+    {/* dummy contents start */}
+    <div class="grid min-h-svh place-items-center text-30">Contents</div>
+    {/* dummy contents end */}
+  </main>
+</Layout>

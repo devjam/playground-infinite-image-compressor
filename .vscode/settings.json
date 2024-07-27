@@ -1,0 +1,51 @@
+{
+  /* Text Editor */
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "never",
+    "source.fixAll": "explicit"
+  },
+  // https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode#default-formatter
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // https://github.com/tailwindlabs/prettier-plugin-tailwindcss/issues/33#issuecomment-1025156688
+  "editor.wordWrap": "on",
+
+  /* Text Editor > Formatting */
+  "editor.formatOnSave": true,
+
+  /* Text Editor > Suggestions */
+  "editor.quickSuggestions": {
+    // https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss#editor.quicksuggestions
+    "strings": "on"
+  },
+
+  /* Text Editor > Files */
+  "files.associations": {
+    // https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss#files.associations
+    "*.css": "tailwindcss"
+  },
+
+  /* Extensions > Emmet */
+  "emmet.includeLanguages": {
+    "astro": "html",
+    "mdx": "javascriptreact",
+    "tailwindcss": "css"
+  },
+
+  /* Extensions > Tailwind CSS IntelliSense */
+  // https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss#tailwindcss.classattributes
+  "tailwindCSS.classAttributes": ["class", "className", "ngClass", "class:list"],
+  // https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss#tailwindcss.emmetcompletions
+  "tailwindCSS.emmetCompletions": true,
+
+  /* Extensions > TypeScript */
+  "typescript.tsdk": "node_modules/typescript/lib",
+
+  /* Extensions > ESLint */
+  // https://github.com/ota-meshi/eslint-plugin-astro?tab=readme-ov-file#visual-studio-code
+  "eslint.validate": ["javascript", "javascriptreact", "astro", "typescript", "typescriptreact"],
+  "eslint.experimental.useFlatConfig": true,
+
+  /* Extensions > Prettier */
+  // https://gist.github.com/JLarky/b26a165d628984723fe285201ca699e5
+  "prettier.documentSelectors": ["**/*.astro"]
+}

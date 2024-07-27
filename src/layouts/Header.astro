@@ -1,0 +1,39 @@
+---
+import { Icon } from 'astro-icon/components'
+import AnchorBase from '../components/AnchorBase.astro'
+
+interface Props {
+  title: string
+  repoUrl?: string | undefined
+}
+
+const { title, repoUrl } = Astro.props
+---
+
+<header class="wrapper absolute left-0 top-10 w-full md:top-16">
+  <AnchorBase
+    href="/"
+    class="block w-fit rounded-[3px] bg-black-primary px-6 py-3 text-12 leading-none text-white-primary/90 transition-colors duration-200 ease-out1 text-w-regular hover:bg-gray-600 md:text-16"
+  >
+    ← Top
+  </AnchorBase>
+  <h1
+    class="mt-6 w-fit rounded-[3px] bg-black-primary px-6 py-4 font-shiftbrain-noto text-16 font-normal leading-[1.2] text-white-primary text-w-109 md:mt-5 md:text-32 lg:max-w-[calc(100%_-_400px)]"
+  >
+    {title}
+  </h1>
+  {
+    repoUrl && (
+      <>
+        <AnchorBase
+          href={repoUrl}
+          class="mt-5 block w-fit rounded-[3px] bg-black-primary px-5 py-4 transition-colors duration-200 ease-out1 hover:bg-gray-600"
+          target="_blank"
+          rel="noopener"
+        >
+          <Icon name="github-mark" class="h-auto w-16 md:w-20" aria-label="GitHub repository" />
+        </AnchorBase>
+      </>
+    )
+  }
+</header>
