@@ -262,6 +262,12 @@ async function saveToFile(data: Object) {
 }
 
 async function createMeta() {
+  const metaExists = await fs.stat('src/meta.json')
+  if (metaExists.isFile()) {
+    console.log('✅すでにmeta.jsonが存在しています。')
+    return
+  }
+
   const tags = await fetchTags()
   const answers = (await newQuestions(tags)) as AnswersBase
   const repoName = await getRepositoryName()

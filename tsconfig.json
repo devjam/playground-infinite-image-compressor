@@ -1,7 +1,13 @@
 {
   "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
-    "types": ["vitest/importMeta"]
+    "types": [
+      "vitest/importMeta"
+    ],
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   },
-  "exclude": ["dist"] // https://github.com/withastro/language-tools/issues/643#issuecomment-1699486909
+  "exclude": [
+    "dist"
+  ]
 }
