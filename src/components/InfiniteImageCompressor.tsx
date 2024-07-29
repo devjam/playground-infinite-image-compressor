@@ -213,6 +213,15 @@ const InfiniteImageCompressor: React.FC = () => {
         hideCopyButton={true}
         collapsed={isMobile}
         titleBar={isMobile ? { position: { x: 10, y: -10 } } : true}
+        theme={
+          isMobile
+            ? {
+                sizes: {
+                  titleBarHeight: '30px',
+                },
+              }
+            : {}
+        }
       />
       <div className="relative h-screen w-screen overflow-hidden">
         <div
