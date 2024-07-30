@@ -33,16 +33,12 @@ const canonicalURL: URL = new URL(Astro.url.pathname, Astro.site)
     <script src="../scripts/main.ts"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-NZ6C341T6V"></script>
-    <script>
-      // @ts-ignore
+    <script type="application/javascript">
       window.dataLayer = window.dataLayer || []
       function gtag() {
-        // @ts-ignore
         dataLayer.push(arguments)
       }
-      // @ts-ignore
       gtag('js', new Date())
-      // @ts-ignore
       gtag('config', 'G-NZ6C341T6V')
     </script>
 
