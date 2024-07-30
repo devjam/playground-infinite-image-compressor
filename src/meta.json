@@ -1,7 +1,9 @@
 {
   "slug": "infinite-image-compressor",
-  "title": "infinite-image-compressor",
+  "title": "Infinite Image Compressor",
   "author": "kaminaly",
-  "tags": [],
+  "tags": [
+    "experiment"
+  ],
   "device": "all"
 }
