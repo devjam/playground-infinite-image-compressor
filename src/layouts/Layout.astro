@@ -1,6 +1,6 @@
 ---
 import defaultOpenGraphImage from '../assets/opengraph-image.png'
-import { SITE_LANG, SITE_REGION, SITE_TITLE, SITE_TWITTER_ID } from '../consts'
+import { SITE_LANG, SITE_REGION, SITE_TITLE, SITE_TWITTER_ID, SITE_DESCRIPTION } from '../consts'
 import Header from './Header.astro'
 
 interface Props {
@@ -42,7 +42,7 @@ const canonicalURL: URL = new URL(Astro.url.pathname, Astro.site)
       gtag('config', 'G-NZ6C341T6V')
     </script>
 
-    {description && <meta name="description" content={description} />}
+    <meta name="description" content={description || SITE_DESCRIPTION} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content={`@${SITE_TWITTER_ID}`} />
     <meta name="twitter:title" content={pageTitle} />
@@ -51,7 +51,7 @@ const canonicalURL: URL = new URL(Astro.url.pathname, Astro.site)
     <meta property="og:type" content="website" />
     <meta property="og:image" content={resolvedOgImage} />
     {canonicalURL && <meta property="og:url" content={canonicalURL} />}
-    {description && <meta property="og:description" content={description} />}
+    <meta property="og:description" content={description || SITE_DESCRIPTION} />
     <meta property="og:site_name" content={SITE_TITLE} />
     <meta property="og:locale" content={`${SITE_LANG}_${SITE_REGION}`} />
 
