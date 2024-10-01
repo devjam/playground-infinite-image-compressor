@@ -61,7 +61,7 @@
     "copyfiles": "2.4.1",
     "inquirer": "9.3.2",
     "postcss-preset-env": "9.5.11",
-    "tsx": "4.7.2",
+    "tsx": "4.19.1",
     "typescript-eslint": "7.17.0"
   },
   "overrides": {
